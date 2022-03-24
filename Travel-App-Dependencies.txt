@@ -1,0 +1,47 @@
+Travel-Companion-App
+
+Dependencies:
+
+1. @material-ui/core
+2. @material-ui/icons
+3. @material-ui/lab
+4. @react-google-maps/api
+5. axios
+6. google-map-react  
+
+
+For Google cloud Api:
+visit: https://console.cloud.google.com/projectcreate
+create account and create project.
+API Key : AIzaSyBYeovRuv2h8THqPw2C58cqUshjXlJJjrY
+
+
+import axios from "axios";
+
+const options = {
+  method: 'GET',
+  url: 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary',
+  params: {
+    bl_latitude: '11.847676',
+    tr_latitude: '12.838442',
+    bl_longitude: '109.095887',
+    tr_longitude: '109.149359',
+    restaurant_tagcategory_standalone: '10591',
+    restaurant_tagcategory: '10591',
+    limit: '30',
+    currency: 'USD',
+    open_now: 'false',
+    lunit: 'km',
+    lang: 'en_US'
+  },
+  headers: {
+    'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
+    'x-rapidapi-key': '2a29fc8b49msh17403373fd47e63p17fb14jsncb21474b89f8'
+  }
+};
+
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
